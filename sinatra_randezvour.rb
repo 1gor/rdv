@@ -41,14 +41,14 @@ get '/upload' do
 end
 
 post '/upload' do
+	name = params[:name]
 	if params[:file]
-		name = params[:name]
 		type = params[:file][:type]
 		file_body = params[:file][:tempfile]
 		settings.rdv.write(name, type, file_body)
 		"success write"
 	else
-		redirect "/uploda?name=#{name}"
+		redirect "/upload?name=#{name}"
 	end
 end
 
