@@ -33,7 +33,6 @@ get '/upload' do
 	name = params[:name]
 	if name != ''
 		type, body = settings.rdv.take(name)
-		"success take. type=#{type}."
 		content_type type
 		body
 	else
@@ -49,7 +48,7 @@ post '/upload' do
 		settings.rdv.write(name, type, file_body)
 		"success write"
 	else
-		"no file."
+		redirect "/uploda?name=#{name}"
 	end
 end
 
